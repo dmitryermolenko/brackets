@@ -26,20 +26,23 @@ if (bracketsObject[firstBracket] === false) {
         }
     }
   }*/
-  var j = 0;
+  var j = 1;
   var string = true;
   while (string && j < str.length) {
-    j++;
     if (bracketsObject[str[j]]){
-      bracketsArray.push(str[j]);
+      if (bracketsObject[str[j]] === str[j]) {
+        bracketsArray.pop();
+      } else {
+        bracketsArray.push(str[j]);
+      }
     } else {
-        if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]) {
+        if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]){
             bracketsArray.pop();
         } else {
             string === false;
         }
     }
-
+     j++;
   }
 
   if (string === false) {
