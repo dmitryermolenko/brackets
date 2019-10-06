@@ -15,8 +15,8 @@ if (bracketsObject[firstBracket] === false) {
   bracketsArray.push(firstBracket);
 }
 
-for (var j = 1; j < str.length; j++) {
-    if (bracketsObject[str[j]] === true) {
+/*for (var j = 1; j < str.length; j++) {
+    if (bracketsObject[str[j]]){
       bracketsArray.push(str[j]);
     } else {
         if (bracketsObject[str[j - 1]] === str[j]) {
@@ -25,13 +25,33 @@ for (var j = 1; j < str.length; j++) {
             return false;
         }
     }
+  }*/
+  var j = 0;
+  var string = true;
+  while (string && j < str.length) {
+    j++;
+    if (bracketsObject[str[j]]){
+      bracketsArray.push(str[j]);
+    } else {
+        if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]) {
+            bracketsArray.pop();
+        } else {
+            string === false;
+        }
+    }
+
   }
 
-  if (bracketsArray.length !== 0)  {
+  if (string === false) {
     return false;
   } else {
-    return true;
+    if (bracketsArray.length !== 0) {
+        return false;
+    } else {
+        return true;
+    }
   }
+
 };
 
 
