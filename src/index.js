@@ -4,7 +4,7 @@ var bracketsObject = {};
 var bracketsArray = [];
 
 for (var i = 0; i < bracketsConfig.length; i++) {
-    bracketsObject[bracketsConfig[0]] = bracketsConfig[1];
+    bracketsObject[bracketsConfig[i][0]] = bracketsConfig[i][1];
 }
 
 var firstBracket = str[0];
@@ -17,14 +17,20 @@ if (bracketsObject[firstBracket] === false) {
 
 for (var j = 1; j < str.length; j++) {
     if (bracketsObject[str[j]] === true) {
-      bracketsObject.push(str[j]);
+      bracketsArray.push(str[j]);
     } else {
         if (bracketsObject[str[j - 1]] === str[j]) {
-            bracketsObject.pop(str[j - 1]);
+            bracketsArray.pop();
         } else {
             return false;
         }
     }
+  }
+
+  if (bracketsArray.length !== 0)  {
+    return false;
+  } else {
+    return true;
   }
 };
 
