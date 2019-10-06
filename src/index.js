@@ -28,22 +28,28 @@ if (bracketsObject[firstBracket] === false) {
   }*/
   var j = 1;
   var string = true;
-  while (string && j < str.length) {
-    if (bracketsObject[str[j]]){
-      if (bracketsObject[str[j]] === str[j]) {
+
+ while (string && j < str.length) {
+    if (bracketsObject[str[j]] && bracketsObject[str[j]] === str[j]) {
+      if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]) {
         bracketsArray.pop();
       } else {
         bracketsArray.push(str[j]);
       }
+
+    } else if (bracketsObject[str[j]]) {
+        bracketsArray.push(str[j]);
+
     } else {
-        if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]){
+         if (bracketsObject[bracketsArray[bracketsArray.length - 1]] === str[j]){
             bracketsArray.pop();
         } else {
-            string === false;
-        }
+            string = false;
+        } 
     }
-     j++;
+    j++;
   }
+
 
   if (string === false) {
     return false;
